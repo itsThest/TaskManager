@@ -1,8 +1,7 @@
 ﻿using TaskManagerBackend.Models;
 namespace TaskManagerBackend.Services
 {
-    public interface IProjectService
-    {
+    
         public interface IProjectService
         {
             Task<(IEnumerable<Project> Items, int TotalCount)> GetPagedAsync(int page, int pageSize, string? name);
@@ -18,5 +17,5 @@ namespace TaskManagerBackend.Services
             NotFound,
             HasTasks
         }
-    }
+    
 }
