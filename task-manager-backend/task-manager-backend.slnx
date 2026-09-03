@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../task-manager-backend.Tests/task-manager-backend.Tests.csproj" Id="7dac9f5d-1886-4b6c-b86a-2692dee97274" />
   <Project Path="task-manager-backend.csproj" />
 </Solution>
