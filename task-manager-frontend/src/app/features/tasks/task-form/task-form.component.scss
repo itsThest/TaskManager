@@ -1,0 +1,19 @@
+.container {
+  padding: 24px;
+  max-width: 600px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.error {
+  color: #d32f2f;
+}

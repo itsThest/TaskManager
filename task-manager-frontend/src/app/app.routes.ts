@@ -15,14 +15,28 @@ export const routes: Routes = [
       .then(m => m.ProjectFormComponent)
   },
   {
-    path: 'projects/:id/edit',
-    loadComponent: () => import('./features/projects/project-form/project-form.component')
-      .then(m => m.ProjectFormComponent)
+    path: 'projects/:projectId/tasks/new',
+    loadComponent: () => import('./features/tasks/task-form/task-form.component')
+      .then(m => m.TaskFormComponent)
   },
-   {
+  {
     path: 'projects/:id/tasks',
     loadComponent: () => import('./features/tasks/task-list/task-list.component')
       .then(m => m.TaskListComponent)
   },
+  {
+    path: 'projects/:id/edit',
+    loadComponent: () => import('./features/projects/project-form/project-form.component')
+      .then(m => m.ProjectFormComponent)
+  },
+  
+  {
+    path: 'tasks/:id/edit',
+    loadComponent: () => import('./features/tasks/task-form/task-form.component')
+      .then(m => m.TaskFormComponent)
+  }
+  
+   
+  
 
 ];
