@@ -64,7 +64,7 @@ El controller no sabe nada de Entity Framework y el service tampoco. El único s
  
 ## Modelo de datos
  
-![Modelo de base de datos](Docs/database-diagram.png)
+![Modelo de base de datos](Docs/ERD_TaskManager.png)
  
 Son dos tablas. Un proyecto puede tener muchas tareas y cada tarea pertenece a un solo proyecto, así que la relación es uno a muchos con la clave foránea `ProjectId` en `Tasks`.
  
