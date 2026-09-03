@@ -18,6 +18,11 @@ export const routes: Routes = [
     path: 'projects/:id/edit',
     loadComponent: () => import('./features/projects/project-form/project-form.component')
       .then(m => m.ProjectFormComponent)
-  }
+  },
+   {
+    path: 'projects/:id/tasks',
+    loadComponent: () => import('./features/tasks/task-list/task-list.component')
+      .then(m => m.TaskListComponent)
+  },
 
 ];

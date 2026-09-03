@@ -7,8 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 import { ProjectService } from '../../../core/services/project.service';
 import { Project, ProjectStatus } from '../../../core/models/project.model';
+
+import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-project-list',
@@ -16,13 +20,16 @@ import { Project, ProjectStatus } from '../../../core/models/project.model';
   imports: [
     CommonModule, FormsModule,
     MatTableModule, MatPaginatorModule, MatFormFieldModule,
-    MatInputModule, MatButtonModule, MatProgressSpinnerModule
+    MatInputModule, MatButtonModule, MatProgressSpinnerModule,MatSnackBarModule
   ],
   templateUrl: './project-list.component.html',
   styleUrl: './project-list.component.scss'
 })
 export class ProjectListComponent implements OnInit {
   private projectService = inject(ProjectService);
+
+  private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
 
   projects: Project[] = [];
   displayedColumns = ['name', 'description', 'startDate', 'status', 'actions'];
@@ -76,4 +83,34 @@ export class ProjectListComponent implements OnInit {
     };
     return labels[status] ?? 'Desconocido';
   }
+
+    newProject(): void {
+    this.router.navigate(['/projects/new']);
+  }
+
+  editProject(id: number): void {
+    this.router.navigate(['/projects', id, 'edit']);
+  }
+
+  deleteProject(id: number): void {
+    if (!confirm('¿Seguro que deseas eliminar este proyecto?')) return;
+
+    this.projectService.delete(id).subscribe({
+      next: () => {
+        this.snackBar.open('Proyecto eliminado', 'Cerrar', { duration: 3000 });
+        this.load();
+      },
+      error: (err) => {
+        const message = err.status === 409
+          ? 'No se puede eliminar un proyecto que tiene tareas asociadas.'
+          : 'No se pudo eliminar el proyecto.';
+        this.snackBar.open(message, 'Cerrar', { duration: 5000 });
+      }
+    });
+  }
+
+    viewTasks(id: number): void {
+    this.router.navigate(['/projects', id, 'tasks']);
+  }
+
 }
