@@ -1,4 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1 {
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.error {
+  color: #d32f2f;
+  padding: 12px;
+}
